@@ -368,7 +368,7 @@ if (!function_exists('themeConfig')) {
         $Checkbox = 'Typecho\Widget\Helper\Form\Element\Checkbox';
         $Layout = 'Typecho\Widget\Helper\Layout';
 
-        $form->addItem(new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)'])
+        $form->addItem((new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)']))
             ->html(__t('settings.group.general')));
 
         $form->addInput(new $Select('lang', [
@@ -407,7 +407,7 @@ if (!function_exists('themeConfig')) {
         $form->addInput(new $Checkbox('tocEnable', ['1' => __t('settings.tocEnable.label')], ['1'],
             __t('settings.tocEnable'), __t('settings.tocEnable.desc')));
 
-        $form->addItem(new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)'])
+        $form->addItem((new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)']))
             ->html(__t('settings.group.style')));
 
         $form->addInput(new $Select('colorScheme', [
@@ -418,7 +418,7 @@ if (!function_exists('themeConfig')) {
         $form->addInput(new $Checkbox('enableChangeColorScheme', ['1' => __t('settings.enableChangeColorScheme.label')], ['1'],
             __t('settings.enableChangeColorScheme'), __t('settings.enableChangeColorScheme.desc')));
 
-        $form->addItem(new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)'])
+        $form->addItem((new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)']))
             ->html(__t('settings.group.sidebar')));
 
         $form->addInput(new $Checkbox('widgetCategories', ['1' => __t('settings.widgetCategories.label')], ['1'],
@@ -430,7 +430,7 @@ if (!function_exists('themeConfig')) {
         $form->addInput(new $Textarea('widgetCustomContent', null, '',
             __t('settings.widgetCustomContent'), __t('settings.widgetCustomContent.desc')));
 
-        $form->addItem(new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)'])
+        $form->addItem((new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)']))
             ->html(__t('settings.group.profile')));
 
         $form->addInput(new $Text('authorName', null, 'Lorem Ipsum',
@@ -444,7 +444,7 @@ if (!function_exists('themeConfig')) {
         $form->addInput(new $Textarea('socialLinks', null, '',
             __t('settings.socialLinks'), __t('settings.socialLinks.desc')));
 
-        $form->addItem(new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)'])
+        $form->addItem((new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)']))
             ->html(__t('settings.group.post')));
 
         $form->addInput(new $Checkbox('postLicenseEnable', ['1' => __t('settings.postLicenseEnable.label')], ['1'],
@@ -468,7 +468,7 @@ if (!function_exists('themeConfig')) {
         $form->addInput(new $Text('commentPerPage', null, '8',
             __t('settings.commentPerPage'), __t('settings.commentPerPage.desc')));
 
-        $form->addItem(new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)'])
+        $form->addItem((new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)']))
             ->html(__t('settings.group.comments')));
 
         $form->addInput(new $Text('githubClientId', null, '',
@@ -477,10 +477,10 @@ if (!function_exists('themeConfig')) {
             __t('settings.githubClientSecret'), __t('settings.githubClientSecret.desc')));
         $form->addInput(new $Text('githubRedirectUrl', null, '',
             __t('settings.githubRedirectUrl'), __t('settings.githubRedirectUrl.desc')));
-        $form->addItem(new $Layout('p', ['style' => 'margin:0.5em 0 1em;padding:8px 12px;background:var(--btn-regular-bg);border-radius:8px;color:var(--btn-content);font-size:0.9em'])
+        $form->addItem((new $Layout('p', ['style' => 'margin:0.5em 0 1em;padding:8px 12px;background:var(--btn-regular-bg);border-radius:8px;color:var(--btn-content);font-size:0.9em']))
             ->html(__t('settings.githubCallbackInfo') . ' <code>' . htmlspecialchars(fuwari_gh_redirect(\Typecho\Widget::widget('Widget_Options'))) . '</code>'));
 
-        $form->addItem(new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)'])
+        $form->addItem((new $Layout('h3', ['style' => 'margin:1.5em 0 0.5em;color:var(--primary)']))
             ->html(__t('settings.group.icp')));
 
         $form->addInput(new $Text('icpText', null, '',
