@@ -61,6 +61,6 @@ jobs:
             --exclude-dir=vendor |
             xargs -0 "$RUNNER_TEMP/phpcompatibility/vendor/bin/phpcs" \
               --standard=PHPCompatibility \
-              --exclude=Generic.NamingConventions.CamelCapsFunctionName.FunctionDoubleUnderscore \
+              --exclude=Generic.NamingConventions.CamelCapsFunctionName \
               --runtime-set testVersion 8.4- \
               --extensions=php
