@@ -66,7 +66,7 @@ function _fuwariSocialPlatformIcon($name) {
       <span class="icon-[fa6-regular--address-card] scale-90 text-5xl text-white opacity-0 transition group-hover:scale-100 group-hover:opacity-100"></span>
     </div>
     <?php $_avatar = $this->options->authorAvatar; ?>
-    <img src="<?php echo $_avatar && $_avatar[0] !== '/' && !str_starts_with($_avatar, 'http') ? $this->options->themeUrl($_avatar, $this->options->theme) : $_avatar; ?>" alt="Profile Image of the Author" class="mx-auto h-full w-full object-cover lg:mt-0">
+    <img src="<?php echo $_avatar && $_avatar[0] !== '/' && strpos($_avatar, 'http') !== 0 ? $this->options->themeUrl($_avatar, $this->options->theme) : $_avatar; ?>" alt="Profile Image of the Author" class="mx-auto h-full w-full object-cover lg:mt-0">
   </a>
   <div class="px-2">
     <div class="mb-1 text-center text-xl font-bold transition dark:text-neutral-50"><?php echo $this->options->authorName; ?></div>

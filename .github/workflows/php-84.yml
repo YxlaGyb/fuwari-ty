@@ -1,0 +1,65 @@
+name: PHP 8.4
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  php84:
+    name: Lint and compatibility
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          coverage: none
+
+      - name: Show PHP version
+        run: php -v
+
+      - name: Lint all PHP files
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            php -l "$file"
+          done < <(find . -type f -name '*.php' -not -path './node_modules/*' -not -path './vendor/*' -print0)
+
+      - name: Install PHPCompatibility
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/phpcompatibility"
+          composer require \
+            --working-dir="$RUNNER_TEMP/phpcompatibility" \
+            --no-interaction \
+            --no-progress \
+            --prefer-dist \
+            squizlabs/php_codesniffer:^3.7 \
+            phpcompatibility/php-compatibility:^9.3
+          "$RUNNER_TEMP/phpcompatibility/vendor/bin/phpcs" \
+            --config-set installed_paths \
+            "$RUNNER_TEMP/phpcompatibility/vendor/phpcompatibility/php-compatibility"
+
+      - name: Check PHP 8.4 compatibility
+        shell: bash
+        run: |
+          set -euo pipefail
+          find . -type f -name '*.php' \
+            -not -path './node_modules/*' \
+            -not -path './vendor/*' \
+            -print0 |
+            xargs -0 "$RUNNER_TEMP/phpcompatibility/vendor/bin/phpcs" \
+              --standard=PHPCompatibility \
+              --runtime-set testVersion 8.4- \
+              --extensions=php
