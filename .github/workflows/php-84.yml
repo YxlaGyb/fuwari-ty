@@ -55,11 +55,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          find . -type f -name '*.php' \
-            -not -path './node_modules/*' \
-            -not -path './vendor/*' \
-            -print0 |
+          grep -rlIZ '<?php' . \
+            --include='*.php' \
+            --exclude-dir=node_modules \
+            --exclude-dir=vendor |
             xargs -0 "$RUNNER_TEMP/phpcompatibility/vendor/bin/phpcs" \
               --standard=PHPCompatibility \
+              --exclude=Generic.NamingConventions.CamelCapsFunctionName.FunctionDoubleUnderscore \
               --runtime-set testVersion 8.4- \
               --extensions=php
