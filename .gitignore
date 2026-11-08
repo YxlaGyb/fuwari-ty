@@ -7,3 +7,7 @@ dist/
 # github & env
 .trae/
 *.code-workspace
+
+# demo static site
+demo/dist/
+

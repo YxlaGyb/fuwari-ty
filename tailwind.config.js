@@ -3,7 +3,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 import { addDynamicIconSelectors } from "@iconify/tailwind";
 
 export default {
-    content: ["./templates/**/*.html", "./**/*.php", "./src/main.ts", "./src/**/*.{js,jsx,svelte,ts,tsx}"],
+    content: ["./templates/**/*.html", "./**/*.php", "./demo/**/*.mjs", "./src/main.ts", "./src/**/*.{js,jsx,svelte,ts,tsx}"],
     darkMode: "class", // allows toggling dark mode manually
     safelist: [
         // 社交媒体图标 (fa7-brands) - 由 profile.php 动态输出，需在此 safelist
